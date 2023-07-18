@@ -6,7 +6,7 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
   name: yup.string().min(2).max(18).required(),
 });
-
+// прописать валидацю для тел
 const initialValues = {
   id: '',
   name: '',
