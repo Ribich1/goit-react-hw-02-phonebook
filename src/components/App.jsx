@@ -7,19 +7,23 @@ class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   handleAddContact = e => {
     const contactEl = {
       id: nanoid(),
-      name: e,
+      name: e.name,
+      number: e.number,
     };
 
-    this.setState(({ contacts, name }) => ({
+    this.setState(({ contacts }) => ({
       contacts: [contactEl, ...contacts],
-      name: e,
+      name: e.name,
+      number: e.number,
     }));
     console.log('this.state.name', this.state.name);
+    console.log('this.state.number', this.state.number);
     console.log('this.state.contacts', this.state.contacts);
   };
 

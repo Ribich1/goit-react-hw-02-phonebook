@@ -8,16 +8,17 @@ const schema = yup.object().shape({
 });
 
 const initialValues = {
+  id: '',
   name: '',
+  number: '',
 };
 
 const ContactForm = ({ onAddContact }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log('values', values.name);
-   onAddContact(values.name);
+    console.log('values', values);
+    onAddContact(values);
     resetForm();
   };
-
 
   return (
     <Formik
@@ -36,6 +37,16 @@ const ContactForm = ({ onAddContact }) => {
           />
           <ErrorMessage name="name" component="div" />
         </label>
+        <label htmlFor="number">
+            Number
+          <Field
+            type="tel"
+            name="number"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+        </label>
+
         <button type="submit">Add contact</button>
       </Form>
     </Formik>
