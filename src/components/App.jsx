@@ -13,11 +13,14 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handleAddContact = e => {
+    // const elNormalized = e.name.toLowerCase();
+    if (this.state.contacts.find(contact => contact.name === e.name)) {
+      alert(`${e.name} is already in contacts.`);
+      return;
+    }
     const contactEl = {
       id: nanoid(),
       name: e.name,
@@ -26,8 +29,6 @@ class App extends Component {
 
     this.setState(({ contacts }) => ({
       contacts: [contactEl, ...contacts],
-      name: e.name,
-      number: e.number,
     }));
     console.log('this.state.name', this.state.name);
     console.log('this.state.number', this.state.number);
